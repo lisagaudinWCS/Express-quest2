@@ -1,5 +1,5 @@
 
-const database = require("./databaseusers");
+const database = require("./database");
 
 //Express 4 PUT
 const putUsers = (req, res) => {
@@ -8,7 +8,7 @@ const putUsers = (req, res) => {
 
   database
     .query(
-      "update users set firstname = ?, lastname = ?, email = ?  city = ?,  language = ?, where id = ?",
+      "UPDATE users SET firstname = ?, lastname = ?, email = ?  city = ?,  language = ?, WHERE id = ?",
       [firstname, lastname, email, city, language, id]
     )
     .then(([result]) => {
@@ -20,7 +20,7 @@ const putUsers = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error editing the movie");
+      res.status(500).send("Error updating the user");
     });
 };
 //Express 3 POST
