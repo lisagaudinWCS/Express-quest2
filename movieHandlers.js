@@ -17,7 +17,7 @@ const postTest = (req, res) => {
     res.status(500).send("Error saving the movie");
   });
 };
-
+// EXPRESS QUEST 02 GET 
 const getMovies = (req, res) => {
   database
     .query("select * from movies")
@@ -29,7 +29,7 @@ const getMovies = (req, res) => {
       res.status(500).send("Error retrieving data from database");
     });
 };
-
+// EXPRESS QUEST 02 GET BY ID
 const getMovieById = (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -48,18 +48,6 @@ const getMovieById = (req, res) => {
       res.status(500).send("Error retrieving data from database");
     });
 };
-
-// const getMovieById = (req, res) => {
-//   const id = parseInt(req.params.id);
-
-//   const movie = movies.find((movie) => movie.id === id);
-
-//   if (movie != null) {
-//     res.json(movie);
-//   } else {
-//     res.status(404).send("Not Found");
-//   }
-// };
 
 module.exports = {
   getMovies,
