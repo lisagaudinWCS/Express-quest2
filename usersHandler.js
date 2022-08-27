@@ -8,7 +8,7 @@ const putUsers = (req, res) => {
 
   database
     .query(
-      "UPDATE users SET firstname = ?, lastname = ?, email = ?  city = ?,  language = ?, WHERE id = ?",
+      "UPDATE users SET firstname = ?, lastname = ?, email = ?,  city = ?,  language = ? WHERE id = ?",
       [firstname, lastname, email, city, language, id]
     )
     .then(([result]) => {
