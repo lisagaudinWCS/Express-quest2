@@ -35,6 +35,9 @@ app.get("/api/users/:id", usersHandler.getUsersById);
 //Express 3 POST
 app.post("/api/users", usersHandler.postUsers);
 
+//Express 4 PUT
+app.post("/api/users/:id", usersHandler.putUsers);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
