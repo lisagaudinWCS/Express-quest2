@@ -1,5 +1,5 @@
 
-const database = require("./database");
+const database = require("./databaseusers");
 
 //Express 4 PUT
 const putUsers = (req, res) => {

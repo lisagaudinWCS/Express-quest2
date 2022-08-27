@@ -36,7 +36,7 @@ app.get("/api/users/:id", usersHandler.getUsersById);
 app.post("/api/users", usersHandler.postUsers);
 
 //Express 4 PUT
-app.post("/api/users/:id", usersHandler.putUsers);
+app.put("/api/users/:id", usersHandler.putUsers);
 
 app.listen(port, (err) => {
   if (err) {
