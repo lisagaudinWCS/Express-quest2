@@ -14,7 +14,7 @@ const welcome = (req, res) => {
 };
 
 app.get("/", welcome);
-
+// MOVIES
 const movieHandlers = require("./movieHandlers");
 
 app.get("/api/movies", movieHandlers.getMovies);
@@ -23,6 +23,10 @@ app.get("/api/movies/:id", movieHandlers.getMovieById);
 //Express 3 POST
 app.post("/api/movies", movieHandlers.postTest);
 
+//Express 4 PUT
+app.put("/api/movies/:id", movieHandlers.putMovies);
+
+//USERS
 const usersHandler = require("./usersHandler");
 
 app.get("/api/users", usersHandler.getUsers);

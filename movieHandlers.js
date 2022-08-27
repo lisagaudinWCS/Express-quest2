@@ -1,6 +1,28 @@
 
 const database = require("./database");
 
+//Express 4 PUT
+const putMovies = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { title, director, year, color, duration } = req.body;
+  database
+  .query(
+    "UPDATE movies set title = ?, director = ?, year = ?, color = ?, duration = ? WHERE id=?",
+    [title, director, year, color, duration, id]
+  )
+  .then(([result]) => {
+    if (result.affectedRows === 0) {
+      res.status(404).send("Not Found!");
+    }
+    else {
+      res.sendStatus(204);
+    }
+  })
+  .catch((err) => {
+    res.status(500).send("Error updating the movie");
+  });
+};
+
 //Express 3 POST
 const postTest = (req, res) => {
   const { title, director, year, color, duration } = req.body;
@@ -53,4 +75,5 @@ module.exports = {
   getMovies,
   getMovieById,
   postTest,
+  putMovies,
 };
