@@ -26,6 +26,9 @@ app.post("/api/movies", movieHandlers.postTest);
 //Express 4 PUT
 app.put("/api/movies/:id", movieHandlers.putMovies);
 
+//Express 5 DELETE
+app.delete("/api/movies/:id", movieHandlers.deleteMovies);
+
 //USERS
 const usersHandler = require("./usersHandler");
 
