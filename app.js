@@ -41,6 +41,9 @@ app.post("/api/users", usersHandler.postUsers);
 //Express 4 PUT
 app.put("/api/users/:id", usersHandler.putUsers);
 
+//Express 5 DELETE
+app.delete("/api/users/:id", usersHandler.deleteUsers);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");

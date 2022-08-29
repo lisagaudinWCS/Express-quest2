@@ -1,6 +1,28 @@
 
 const database = require("./database");
 
+//Express 5 DELETE
+const deleteUsers = (req, res) => {
+  const id = parseInt(req.params.id);
+  database
+  .query(
+    "DELETE FROM users WHERE id = ?",
+    [id]
+  )
+  .then (([result]) => {
+    if (result.affectedRows === 0) {
+      res.status(404).send("Not Found!");
+    }
+    else {
+      res.sendStatus(204);
+    }
+  })
+  .catch((err) => {
+    res.status(500).send("Error deleting the user");
+  });
+};
+
+
 //Express 4 PUT
 const putUsers = (req, res) => {
   const id = parseInt(req.params.id);
@@ -78,4 +100,5 @@ module.exports = {
   getUsersById,
   postUsers,
   putUsers,
+  deleteUsers,
 };
