@@ -15,31 +15,36 @@ const welcome = (req, res) => {
 
 app.get("/", welcome);
 // MOVIES
+const { validateMovie } = require("./validator.js");
+
 const movieHandlers = require("./movieHandlers");
 
 app.get("/api/movies", movieHandlers.getMovies);
 app.get("/api/movies/:id", movieHandlers.getMovieById);
 
 //Express 3 POST
-app.post("/api/movies", movieHandlers.postTest);
+app.post("/api/movies", validateMovie, movieHandlers.postTest);
 
 //Express 4 PUT
-app.put("/api/movies/:id", movieHandlers.putMovies);
+app.put("/api/movies/:id", validateMovie, movieHandlers.putMovies);
 
 //Express 5 DELETE
 app.delete("/api/movies/:id", movieHandlers.deleteMovies);
 
 //USERS
+
+const { validateUser } = require("./validator.js");
+
 const usersHandler = require("./usersHandler");
 
 app.get("/api/users", usersHandler.getUsers);
 app.get("/api/users/:id", usersHandler.getUsersById);
 
 //Express 3 POST
-app.post("/api/users", usersHandler.postUsers);
+app.post("/api/users", validateUser, usersHandler.postUsers);
 
 //Express 4 PUT
-app.put("/api/users/:id", usersHandler.putUsers);
+app.put("/api/users/:id", validateUser, usersHandler.putUsers);
 
 //Express 5 DELETE
 app.delete("/api/users/:id", usersHandler.deleteUsers);
