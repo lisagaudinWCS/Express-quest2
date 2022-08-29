@@ -64,8 +64,24 @@ const postUsers = (req, res) => {
 
 //Express 2 - 6 GET
 const getUsers = (req, res) => {
+  let sql = "SELECT * FROM users";
+  const sqlValues = [];
+
+  if (req.query.city != null) {
+    sql += " WHERE city = ?";
+    sqlValues.push(req.query.city);
+  }
+    if (req.query.language != null) {
+      sql += " AND language = ?";
+      sqlValues.push(req.query.language);
+    }
+  else if (req.query.language != null) {
+    sql += " WHERE language = ?";
+    sqlValues.push(req.query.language);
+  }
+
   database
-    .query("select * from users")
+    .query(sql, sqlValues)
     .then(([users]) => {
       res.json(users);
     })
