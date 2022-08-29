@@ -62,7 +62,7 @@ const postUsers = (req, res) => {
   });
 };
 
-//Express 2 GET
+//Express 2 - 6 GET
 const getUsers = (req, res) => {
   database
     .query("select * from users")
